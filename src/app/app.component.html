@@ -7,10 +7,13 @@
       <nav>
         <img src="assets/img/logo.svg" width="61" height="40" alt="Логотип" title="" />
         <div>
-          <a href="#">{{ headerTop2Item1 }}</a>
-          <a href="#">{{ headerTop2Item2 }}</a>
-          <a href="#">{{ headerTop2Item3 }}</a>
+          <a href="#">{{ headerTop1Item1 }}</a>
+          <a href="#">{{ aboutCompany }}</a>
+          <a href="#" *ngIf="isheaderTop1Item3">{{ headerTop1Item3 }}</a>
         </div>
+        <button (click)="isheaderTop1Item3 = !isheaderTop1Item3">Каталог</button>
+        <button (click)="isManHidden = !isManHidden">Мужик</button>
+        <button (click)="changeMenuText()">Изменить текст</button>
       </nav>
 
       <div>
@@ -36,14 +39,10 @@
     <div class="top2">
 
       <div>
-        <a href="#">
-          <img src="assets/img/burger-off.svg" width="30" height="24" alt="Корзина" title="" />
-          {{ headerTop2Item1 }}
-        </a>
-        <a href="#">{{ headerTop2Item2 }}</a>
-        <a href="#">{{ headerTop2Item3 }}</a>
-        <a href="#">{{ headerTop2Item4 }}</a>
-        <a href="#">{{ headerTop2Item5 }}</a>
+        <img src="assets/img/burger-off.svg" width="30" height="24" alt="Корзина" title="" />
+        <div>
+          <a href="#" *ngFor="let item of toUpperCase">{{ item }}</a>
+        </div>
       </div>
 
       <div>
@@ -62,7 +61,7 @@
 
 </header>
 
-<div class="first">
+<div class="first" *ngIf="isManHidden">
   <div class="container">
     <h1>Инструмент для вашего <br>бизнеса</h1>
   </div>
@@ -86,11 +85,7 @@
 <div class="container">
 
   <div class="pagination">
-    <button class="active">1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>4</button>
-    <button>5</button>
+    <button *ngFor="let item of newPages">{{item}}</button>
   </div>
 
   <div class="groups">

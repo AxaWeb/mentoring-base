@@ -61,7 +61,7 @@ header > div {
    width: 100%;
    height: calc(100vh - 128px);
    background-size: contain, cover;
-   background-image: url(/assets/img/background-2.svg), url(/assets/img/background-1.jpg);
+   background-image: url('/assets/img/background-2.svg'), url('/assets/img/background-1.jpg');
    background-position: 0 0, 0 0;
    background-repeat: no-repeat;
    align-content: center
