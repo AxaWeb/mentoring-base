@@ -1,0 +1,81 @@
+<button (click)="isManHidden = !isManHidden">Мужик</button>
+
+<div class="first" *ngIf="isManHidden">
+  <div class="container">
+    <h1>Инструмент для вашего <br>бизнеса</h1>
+  </div>
+</div>
+
+<div class="container benefits">
+  <div>
+    <img src="/assets/img/more.svg" alt="Большой ассортимент" width="72" height="72" title="" />
+    <p><b>Большой ассортимент</b> строительных материалов всегда в наличии</p>
+  </div>
+  <div>
+    <img src="/assets/img/delivery.svg" alt="Доставка стройматериалов" width="72" height="72" title="" />
+    <p><b>Доставка стройматериалов</b> в течении четырех часов или в любое удобное время</p>
+  </div>
+  <div>
+    <img src="/assets/img/good.svg" alt="Cистема управления качеством" width="72" height="72" title="" />
+    <p>Многоуровневая <b>система управления качеством</b> по стандарту ISO 9001</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="pagination">
+    <button *ngFor="let item of newPages">{{item}}</button>
+  </div>
+
+  <div class="groups">
+    <div>
+      <div>
+        <p>Строительный отделочный инструмент</p>
+        <img class="left" src="/assets/img/groups-1.png" alt="" width="" height="auto" />
+        <a href="#" class="link right">
+          <span>Перейти в каталог</span>
+          <img src="/assets/img/arrow-right.svg" alt="Перейти в каталог" width="27px" height="auto" />
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <p class="tar">Эмали</p>
+        <img class="left" src="/assets/img/groups-2.png" alt="" width="" height="auto" />
+        <a href="#" class="link right">
+          <span>Перейти в каталог</span>
+          <img src="/assets/img/arrow-right.svg" alt="Перейти в каталог" width="27px" height="auto" />
+        </a>
+      </div>
+      <div>
+        <p>Пены, клеи и <br>герметики</p>
+        <img class="right" src="/assets/img/groups-4.png" alt="" width="" height="auto" />
+        <a href="#" class="link">
+          <span>Перейти в каталог</span>
+          <img src="/assets/img/arrow-right.svg" alt="Перейти в каталог" width="27px" height="auto" />
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <p>Лакокрасочные материалы</p>
+        <img class="right" src="/assets/img/groups-3.png" alt="" width="" height="auto" />
+        <a href="#" class="link">
+          <span>Перейти в каталог</span>
+          <img src="/assets/img/arrow-right.svg" alt="Перейти в каталог" width="27px" height="auto" />
+        </a>
+      </div>
+      <div>
+        <p>Розетки и выключатели</p>
+        <img class="left" src="/assets/img/groups-5.png" alt="" width="" height="auto" />
+        <a href="#" class="link right">
+          <span>Перейти в каталог</span>
+          <img src="/assets/img/arrow-right.svg" alt="Перейти в каталог" width="27px" height="auto" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
