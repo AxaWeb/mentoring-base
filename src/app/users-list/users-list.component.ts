@@ -40,7 +40,7 @@ export class UsersListComponent {
 
   constructor() {
     this.usersListApi.get<User[]>('https://jsonplaceholder.typicode.com/users').subscribe(
-      (response:any) => {
+      (response:User[]) => {
         this.users = response;
       }
     )
