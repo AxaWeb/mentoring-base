@@ -1,0 +1,51 @@
+<div class="container">
+  <h1>8. JavaScript. Задачи по массивам</h1>
+  <h2>1. Преобразовать данные к виду чтобы у каждого пользователя отобразить только id и username:</h2>
+  <div *ngFor="let user of users">
+    <p>{{ user.id }}: {{ user.username }}</p>
+  </div>
+  <hr>
+  <h2>2. Получить из данных выше список всех эмейлов</h2>
+  <div *ngFor="let user of users">
+    <p>{{ user.email }}</p>
+  </div>
+  <hr>
+  <h2>3. Вывести пользователя с id === 9</h2>
+  <div *ngFor="let user of users; let i = index">
+    <p *ngIf="i === 8">id: {{ user.id }}, {{ user.name }}</p>
+  </div>
+  <hr>
+  <h2>4. Вывести всех пользователей из города 'Lebsackbury'</h2>
+  <div *ngFor="let user of users">
+    <p *ngIf="user.address.city === 'Lebsackbury'">user: {{ user.name }}, city: {{ user.address.city }}</p>
+  </div>
+  <hr>
+  <h2>5. Вывести первых 5 пользователей</h2>
+  <div *ngFor="let user of users; let i = index">
+    <p *ngIf="i <= 4">id: {{ user.id }}, {{ user.name }}</p>
+  </div>
+  <hr>
+  <h2>6. Вывести всех пользователей в обратном порядке</h2>
+  <div *ngFor="let user of users.reverse()">
+    <p>id: {{user.id}}, {{ user.name }}</p>
+  </div>
+  <hr>
+  <h2>7. Посчитать сколько всего пользователей</h2>
+  <p>всего пользователей: {{ users.length }}</p>
+  <hr>
+  <h2>8. Вывести список вебсайтов пользователей которые содержат '.com'</h2>
+  <div *ngFor="let user of users">
+    <p *ngIf="user.website.match('.com')">{{ user.website }}</p>
+  </div>
+  <hr>
+  <h2>9. Вывести все username которые длиннее 12 символов</h2>
+  <div *ngFor="let user of users">
+    <p *ngIf="user.username.length > 12">{{ user.username }}</p>
+  </div>
+  <hr>
+  <h2>10. Привести список всех username где каждый будет в нижнем регистре</h2>
+  <div *ngFor="let user of users">
+    <p>{{ user.username.toLowerCase() }}</p>
+  </div>
+</div>
+<br><br><br>
