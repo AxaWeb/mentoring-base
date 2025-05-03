@@ -253,10 +253,10 @@ const six = arrayData.reverse()
 const seven = arrayData.length
 
 // 8. Вывести список вебсайтов пользователей которые содержат '.com'
-const eight = arrayData.reduce((acc, item) => [ ...acc, item.website.includes('.com') ? item.website : null ], []).filter( el => el !== null )
+const eight = arrayData.filter(i => i.website.includes('.com')).map(i => i.website)
 
 // 9. Вывести все username которые длиннее 12 символов
-const nine = arrayData.reduce((acc, item) => [...acc, item.username.length > 12 ? item.username : null], []).filter( el => el !== null )
+const nine = arrayData.filter(i => i.username.length > 12).map(i => i.username)
 
 // 10. Привести список всех username где каждый будет в нижнем регистре
 const ten = arrayData.reduce((acc, item) => [...acc, item.username.toLowerCase()], [])
