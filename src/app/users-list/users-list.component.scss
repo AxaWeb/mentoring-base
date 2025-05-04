@@ -14,19 +14,4 @@
     padding: 10px;
     box-shadow: 0 0 20px -5px #A1A0A0;
   }
-
-  button {
-    width: 100%;
-    padding: 5px;
-    border-radius: 7px;
-    border: none;
-    background: #F0BA4E;
-    line-height: 2;
-    cursor: pointer;
-
-    &:hover {
-      background: #4B565E;
-      color: #F0BA4E;
-    }
-  }
 }
