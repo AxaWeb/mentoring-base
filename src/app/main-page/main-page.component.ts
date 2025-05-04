@@ -11,7 +11,6 @@ const newPages:Array<number> = [5, 4, 3, 2, 1]
   styleUrl: './main-page.component.scss'
 })
 
-
 export class MainPageComponent {
   isManHidden:boolean = true;
 

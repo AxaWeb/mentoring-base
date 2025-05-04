@@ -15,6 +15,7 @@ const toUpperCase = ['Каталог', 'Стройматериалы', 'Инст
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
+
 export class HeaderComponent {
   readonly headerTop1Item1 = "Главная";
   readonly headerTop1Item3 = "Каталог";
