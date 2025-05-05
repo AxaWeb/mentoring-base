@@ -1,6 +1,6 @@
 import {Component, inject} from "@angular/core";
-import {NgFor} from "@angular/common";
 import {UsersApiService} from "../users-api.service";
+import {NgFor} from "@angular/common";
 import {UserCardComponent} from "./user-card/user-card.component";
 
 export interface User {
@@ -41,7 +41,7 @@ export class UsersListComponent {
 
   constructor() {
     this.UsersApiService.getUsers().subscribe(
-      (response:any) => {
+      (response:User[]) => {
         this.users = response;
       }
     )

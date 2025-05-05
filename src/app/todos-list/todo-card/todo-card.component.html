@@ -1,0 +1,5 @@
+<p><span>id пользователя: </span>{{todo.userId}}</p>
+<p><span>id задачи: </span>{{todo.id}}</p>
+<p><span>текст задачи: </span>{{todo.title}}</p>
+<p><span>задача завершена?: </span>{{todo.completed ? 'да' : 'нет'}}</p>
+<button class="button" (click)="onDeleteTodo()">удалить задачу</button>

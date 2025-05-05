@@ -11,6 +11,7 @@
           <a href="#">{{ aboutCompany }}</a>
           <a href="#" *ngIf="isheaderTop1Item3">{{ headerTop1Item3 }}</a>
           <button routerLink="/users">Пользователи</button>
+          <button routerLink="/todos">ToDos</button>
         </div>
         <button (click)="isheaderTop1Item3 = !isheaderTop1Item3">Каталог</button>
         <button (click)="changeMenuText()">Изменить текст</button>

@@ -1,0 +1,17 @@
+.todos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  p { line-height: 1.5 }
+  span { color: #A1A0A0 }
+
+  div {
+    flex-basis: calc(25% - 15px);
+    min-height: 200px;
+    border: solid 1px #ccc;
+    border-radius: 7px;
+    padding: 10px;
+    box-shadow: 0 0 20px -5px #A1A0A0;
+  }
+}
