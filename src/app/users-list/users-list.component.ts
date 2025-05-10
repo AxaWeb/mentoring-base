@@ -1,7 +1,8 @@
-import {Component, inject} from "@angular/core";
+import {ChangeDetectionStrategy, Component, inject} from "@angular/core";
 import {UsersApiService} from "../users-api.service";
-import {NgFor} from "@angular/common";
+import {AsyncPipe, NgFor} from "@angular/common";
 import {UserCardComponent} from "./user-card/user-card.component";
+import {UsersService} from "../users.service";
 
 export interface User {
   id: number;
@@ -30,26 +31,25 @@ export interface User {
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [NgFor, UserCardComponent],
+  imports: [NgFor, UserCardComponent, AsyncPipe],
   templateUrl: './users-list.component.html',
-  styleUrl: './users-list.component.scss'
+  styleUrl: './users-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class UsersListComponent {
   readonly UsersApiService = inject(UsersApiService);
-  users:User[] = [];
+  readonly UsersService = inject(UsersService);
 
   constructor() {
     this.UsersApiService.getUsers().subscribe(
       (response:User[]) => {
-        this.users = response;
+        this.UsersService.setUsers(response)
       }
     )
   }
 
   deleteUser(id:number){
-    this.users =  this.users.filter(
-      user => user.id !== id
-    );
+    this.UsersService.deleteUser(id)
   }
 }

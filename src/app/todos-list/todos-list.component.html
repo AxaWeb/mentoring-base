@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Список ToDos</h1>
   <div class="todos">
-    <div *ngFor="let todo of todos">
+    <div *ngFor="let todo of TodoService.todoSubject$ | async">
       <app-todo-card [todo]="todo" (deleteTodo)="deleteTodo(todo.id)"></app-todo-card>
     </div>
   </div>
