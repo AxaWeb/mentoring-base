@@ -9,7 +9,7 @@ import {User} from "./users-list/users-list.component";
 export class UsersApiService {
   readonly usersListApi = inject(HttpClient);
 
-  getUsers() {
+  public getUsers() {
     return this.usersListApi.get<User[]>('https://jsonplaceholder.typicode.com/users')
   }
 }

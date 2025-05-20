@@ -25,7 +25,7 @@ export class HeaderComponent {
 
   toUpperCase:Array<string> = toUpperCase;
   isUpperCase:boolean = true;
-  changeMenuText() {
+  public changeMenuText() {
     this.toUpperCase = toUpperCase.map(
       item => this.isUpperCase ? item.toUpperCase() : item.toLowerCase()
     )

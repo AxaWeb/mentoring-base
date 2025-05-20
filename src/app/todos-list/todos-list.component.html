@@ -1,7 +1,9 @@
 <div class="container">
+  <app-create-todo-form (createTodo)="createTodo($event)"></app-create-todo-form>
+
   <h1>Список ToDos</h1>
   <div class="todos">
-    <div *ngFor="let todo of TodoService.todoSubject$ | async">
+    <div *ngFor="let todo of TodoService.todos$ | async">
       <app-todo-card [todo]="todo" (deleteTodo)="deleteTodo(todo.id)"></app-todo-card>
     </div>
   </div>

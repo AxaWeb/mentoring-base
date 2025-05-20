@@ -3,13 +3,14 @@ import {UsersApiService} from "../users-api.service";
 import {AsyncPipe, NgFor} from "@angular/common";
 import {UserCardComponent} from "./user-card/user-card.component";
 import {UsersService} from "../users.service";
+import {CreateUserFormComponent} from "../create-user-form/create-user-form-component";
 
 export interface User {
   id: number;
   name: string;
-  username: string;
+  username?: string;
   email: string;
-  address: {
+  address?: {
     street: string;
     suite: string;
     city: string;
@@ -19,19 +20,19 @@ export interface User {
       lng: number;
     };
   };
-  phone: string;
+  phone?: string;
   website: string;
   company: {
     name: string;
-    catchPrase: string;
-    bs: string;
+    catchPrase?: string;
+    bs?: string;
   };
 }
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [NgFor, UserCardComponent, AsyncPipe],
+  imports: [NgFor, UserCardComponent, AsyncPipe, CreateUserFormComponent],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -49,7 +50,22 @@ export class UsersListComponent {
     )
   }
 
-  deleteUser(id:number){
+  public createUser(formData: any):void {
+    this.UsersService.createUser(
+      {
+        id: new Date().getTime(),
+        name: formData.name,
+        email: formData.email,
+        website: formData.website,
+        company: {
+          name: formData.companyName,
+        }
+      }
+    )
+    console.log(formData)
+  }
+
+  public deleteUser(id:number){
     this.UsersService.deleteUser(id)
   }
 }

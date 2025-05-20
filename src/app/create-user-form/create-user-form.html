@@ -1,0 +1,24 @@
+<p class="h1">Создать пользователя</p>
+<form id="createUserForm" [formGroup]="form" (ngSubmit)="submitForm()">
+  <p>Имя:</p>
+  <input type="text" formControlName="name" />
+  <div class="alert" *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
+    <div *ngIf="form.controls['name'].errors">Минимум 2 символа</div>
+  </div>
+  <p>Email:</p>
+  <input type="text" formControlName="email" />
+  <div class="alert" *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+    <div *ngIf="form.controls['email'].errors">Email введен не верно</div>
+  </div>
+  <p>Сайт:</p>
+  <input type="text" formControlName="website" />
+  <div class="alert" *ngIf="form.controls['website'].invalid && form.controls['website'].touched">
+    <div *ngIf="form.controls['website'].errors">Сайт введен не верно</div>
+  </div>
+  <p>Компания:</p>
+  <input type="text" formControlName="companyName" />
+  <div class="alert" *ngIf="form.controls['companyName'].invalid && (form.controls['companyName'].dirty || form.controls['companyName'].touched)">
+    <div *ngIf="form.controls['companyName'].errors">Минимум 2 символа</div>
+  </div>
+  <button [disabled]="form.invalid">Create user</button>
+</form>

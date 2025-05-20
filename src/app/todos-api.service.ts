@@ -9,7 +9,7 @@ import {Todos} from "./todos-list/todos-list.component";
 export class TodosApiService {
   readonly todosApiService = inject(HttpClient);
 
-  getTodos() {
+  public getTodos() {
     return this.todosApiService.get<Todos[]>('https://jsonplaceholder.typicode.com/todos')
   }
 }

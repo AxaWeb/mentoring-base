@@ -1,0 +1,18 @@
+<p class="h1">Создать ToDo</p>
+<form id="createTodoForm" [formGroup]="todoForm" (ngSubmit)="submitTodoForm()">
+  <p>ID пользователя:</p>
+  <input type="text" formControlName="userId" />
+  <div class="alert" *ngIf="todoForm.controls['userId'].touched">
+    <div *ngIf="todoForm.controls['userId'].errors">User Id должен быть из цифр</div>
+  </div>
+  <p>Текст задачи:</p>
+  <input type="text" formControlName="title" />
+  <p>Задача завершена:</p>
+  <div class="label">
+    <input type="radio" id="input1" formControlName="completed" value="true" />
+    <label for="input1">Да</label>
+    <input type="radio" id="input2" formControlName="completed" value="false" />
+    <label for="input2">Нет</label>
+  </div>
+  <button [disabled]="todoForm.invalid">Создать ToDo</button>
+</form>

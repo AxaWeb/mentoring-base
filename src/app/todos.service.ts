@@ -5,26 +5,36 @@ import {BehaviorSubject} from "rxjs";
 @Injectable({ providedIn: 'root' })
 export class TodosService {
   todoSubject$ = new BehaviorSubject<Todos[]>([]);
+  todos$ = this.todoSubject$.asObservable();
 
-  setTodo(todos:Todos[]) {
+  public setTodo(todos:Todos[]) {
     this.todoSubject$.next(todos);
   }
 
-  editTodo(editTodo:Todos) {
+  public editTodo(editTodo:Todos) {
     this.todoSubject$.next(
       this.todoSubject$.value.map(
-        todo => todo.id === editTodo.id ? editTodo : todo
+        (todo: Todos) => todo.id === editTodo.id ? editTodo : todo
       )
     )
   }
 
-  creatTodo(todos:Todos) {
-    this.todoSubject$.next([...this.todoSubject$.value, todos])
+  public creatTodo(todos:Todos) {
+    const existingTodos = this.todoSubject$.value.find(
+      (currentTodo:Todos) => (currentTodo.title === todos.title) && (currentTodo.userId === todos.userId)
+    )
+
+    if (existingTodos) {
+      alert(`Такой ToDo уже есть!`);
+    } else {
+      this.todoSubject$.next([todos, ...this.todoSubject$.value])
+      alert(`ToDo добавлен`);
+    }
   }
 
-  deleteTodo(id:number) {
+  public deleteTodo(id:number) {
     this.todoSubject$.next(
-      this.todoSubject$.value.filter(todos => todos.id !== id)
+      this.todoSubject$.value.filter((todos: Todos) => todos.id !== id)
     )
   }
 }

@@ -10,12 +10,12 @@ import {User} from "../users-list.component";
 
 export class UserCardComponent {
   @Input()
-  user: any;
+  user!: User;
 
   @Output()
   deleteUser:EventEmitter<User[]> = new EventEmitter()
 
-  onDeleteUser(){
+  public onDeleteUser(){
     this.deleteUser.emit()
   }
 }

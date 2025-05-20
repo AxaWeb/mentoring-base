@@ -10,7 +10,7 @@ import {Todos} from "../todos-list.component";
 
 export class TodoCardComponent {
   @Input()
-  todo:any
+  todo!: Todos
 
   @Output()
   deleteTodo:EventEmitter<Todos[]> = new EventEmitter()
