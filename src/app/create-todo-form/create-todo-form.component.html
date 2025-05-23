@@ -1,18 +1,21 @@
 <p class="h1">Создать ToDo</p>
-<form id="createTodoForm" [formGroup]="todoForm" (ngSubmit)="submitTodoForm()">
-  <p>ID пользователя:</p>
-  <input type="text" formControlName="userId" />
-  <div class="alert" *ngIf="todoForm.controls['userId'].touched">
-    <div *ngIf="todoForm.controls['userId'].errors">User Id должен быть из цифр</div>
-  </div>
-  <p>Текст задачи:</p>
-  <input type="text" formControlName="title" />
-  <p>Задача завершена:</p>
-  <div class="label">
-    <input type="radio" id="input1" formControlName="completed" value="true" />
-    <label for="input1">Да</label>
-    <input type="radio" id="input2" formControlName="completed" value="false" />
-    <label for="input2">Нет</label>
-  </div>
-  <button [disabled]="todoForm.invalid">Создать ToDo</button>
+<form id="createTodoForm" [formGroup]="todoForm">
+  <mat-form-field>
+    <mat-label>ID пользователя:</mat-label>
+    <input matInput formControlName="userId" placeholder="например: 123" />
+    <mat-error>User Id обязателен и должен быть из цифр</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Текст задачи:</mat-label>
+    <textarea matInput formControlName="title" placeholder="например: новая ToDo"></textarea>
+    <mat-error>Обязательно, более 2х символов</mat-error>
+  </mat-form-field>
+  <label id="completed-label">Задача завершена:</label>
+  <mat-button-toggle-group name="completed" formControlName="completed" aria-label="completed-label">
+    <mat-button-toggle value="true">Да</mat-button-toggle>
+    <mat-button-toggle value="false">Нет</mat-button-toggle>
+  </mat-button-toggle-group>
+  <button type="submit" (click)="submitTodoForm()" mat-raised-button [disabled]="todoForm.invalid">
+    <mat-icon>add_task</mat-icon>Создать ToDo
+  </button>
 </form>

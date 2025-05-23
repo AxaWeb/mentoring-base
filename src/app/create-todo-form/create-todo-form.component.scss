@@ -4,27 +4,8 @@
   margin: 20px 0;
   flex-direction: column;
 
-  button, p { margin: 20px 0 0 }
-  button, input { padding: 5px }
-
-  .label {
-    display: flex; gap: 20px;
-
-    & label {
-      padding: 5px;
-      flex: 1 1 50%;
-      text-align: center;
-      border: solid 1px rgb(118, 118, 118)
-    }
-  }
-
-  input[type="radio"] {
-    display: none;
-
-    &:checked + label {
-      background: #F0BA4E;
-    }
-  }
+  mat-button-toggle { width: 50% }
+  button { margin: 20px 0 0 }
 }
 
-.alert {color: red}
+.h1 { margin: 50px 0 0 }

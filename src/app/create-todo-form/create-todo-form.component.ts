@@ -1,11 +1,15 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgIf} from "@angular/common";
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
+import {MatIconModule} from "@angular/material/icon";
 
 @Component({
   selector: 'app-create-todo-form',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatButtonToggleGroup, MatButtonToggle],
   templateUrl: './create-todo-form.component.html',
   styleUrl: './create-todo-form.component.scss'
 })
@@ -21,5 +25,10 @@ export class CreateTodoFormComponent {
 
   public submitTodoForm():void {
     this.createTodo.emit({...this.todoForm.value, completed: this.todoForm.get('completed')?.value === 'true' });
+    this.todoForm.reset({
+      userId: this.todoForm.value.userId,
+      title: null,
+      completed: this.todoForm.value.completed
+    })
   }
 }

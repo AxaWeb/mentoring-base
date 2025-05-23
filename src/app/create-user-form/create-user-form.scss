@@ -4,8 +4,7 @@
   width: 300px;
   margin: 20px 0;
 
-  button, p { margin: 20px 0 0 }
-  button, input { padding: 5px }
+  mat-button-toggle { width: 50% }
 }
 
-.alert {color: red}
+.h1 { margin: 50px 0 0 }
