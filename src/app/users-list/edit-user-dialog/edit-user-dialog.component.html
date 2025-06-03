@@ -1,0 +1,25 @@
+<form id="editUserDialogForm" [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Имя:</mat-label>
+    <input matInput formControlName="name" placeholder="например: Пользователь" />
+    <mat-error>Минимум 2 символа</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email:</mat-label>
+    <input matInput formControlName="email" placeholder="например: test@test.ru" />
+    <mat-error>Email введен не верно</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Сайт:</mat-label>
+    <input matInput formControlName="website" placeholder="например: https://google.com/" />
+    <mat-error>Сайт введен не верно</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Компания:</mat-label>
+    <input matInput formControlName="companyName" placeholder="например: ООО «Company»" />
+    <mat-error>Минимум 2 символа</mat-error>
+  </mat-form-field>
+  <button type="submit" [mat-dialog-close]="userFormWithId" mat-raised-button [disabled]="form.invalid">
+    <mat-icon>save</mat-icon> Сохранить изменения
+  </button>
+</form>

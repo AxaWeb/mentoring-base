@@ -62,10 +62,18 @@ export class UsersListComponent {
         }
       }
     )
-    console.log(formData)
   }
 
   public deleteUser(id:number){
     this.UsersService.deleteUser(id)
+  }
+
+  public editUser(user:any) {
+    this.UsersService.editUser({
+      ...user,
+      company: {
+        name: user.companyName
+      }
+    })
   }
 }
