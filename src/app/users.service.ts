@@ -1,40 +1,40 @@
-import {Injectable} from "@angular/core";
-import {User} from "./users-list/users-list.component";
-import {BehaviorSubject} from "rxjs";
+import { Injectable } from "@angular/core";
+import { iCreateUser, iUser } from "./interfaces/user.interface";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
-  private usersSubject$ = new BehaviorSubject<User[]>([]);
+  private usersSubject$ = new BehaviorSubject<iUser[]>([]);
   users$ = this.usersSubject$.asObservable();
 
-  public setUsers(users:User[]) {
+  public setUsers(users:iUser[]) {
     this.usersSubject$.next(users);
   }
 
-  public editUser(editedUser:User) {
+  public editUser(editedUser:iUser) {
     this.usersSubject$.next(
       this.usersSubject$.value.map(
-        (user: User) => user.id === editedUser.id  ? editedUser : user
+        (user: iUser) => user.id === editedUser.id  ? editedUser : user
       )
     )
   }
 
-  public createUser(user:User) {
+  public createUser(user:iCreateUser) {
     const existingUser = this.usersSubject$.value.find(
-      (currentUser:User) => currentUser.email === user.email
+      (currentUser:iCreateUser) => currentUser.email === user.email
     )
 
     if (existingUser) {
       alert(`Такой email занят!`);
     }  else {
-      this.usersSubject$.next([...this.usersSubject$.value, user]);
+      this.usersSubject$.next([user, ...this.usersSubject$.value]);
       alert(`Юзер добавлен`);
     }
   }
 
   public deleteUser(id:number) {
     this.usersSubject$.next(
-      this.usersSubject$.value.filter((user: User) => user.id !== id)
+      this.usersSubject$.value.filter((user: iUser) => user.id !== id)
     );
   }
 }

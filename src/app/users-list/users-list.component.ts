@@ -1,33 +1,10 @@
-import {ChangeDetectionStrategy, Component, inject} from "@angular/core";
-import {UsersApiService} from "../users-api.service";
-import {AsyncPipe, NgFor} from "@angular/common";
-import {UserCardComponent} from "./user-card/user-card.component";
-import {UsersService} from "../users.service";
-import {CreateUserFormComponent} from "../create-user-form/create-user-form-component";
-
-export interface User {
-  id: number;
-  name: string;
-  username?: string;
-  email: string;
-  address?: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: number;
-      lng: number;
-    };
-  };
-  phone?: string;
-  website: string;
-  company: {
-    name: string;
-    catchPrase?: string;
-    bs?: string;
-  };
-}
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
+import { UsersApiService } from "../users-api.service";
+import { AsyncPipe, NgFor } from "@angular/common";
+import { UserCardComponent } from "./user-card/user-card.component";
+import { UsersService } from "../users.service";
+import { CreateUserFormComponent } from "../create-user-form/create-user-form-component";
+import { iCreateUser, iEditUser, iUser } from "../interfaces/user.interface";
 
 @Component({
   selector: 'app-users-list',
@@ -44,13 +21,13 @@ export class UsersListComponent {
 
   constructor() {
     this.UsersApiService.getUsers().subscribe(
-      (response:User[]) => {
+      (response:iUser[]) => {
         this.UsersService.setUsers(response)
       }
     )
   }
 
-  public createUser(formData: any):void {
+  public createUser(formData: iCreateUser):void {
     this.UsersService.createUser(
       {
         id: new Date().getTime(),
@@ -58,7 +35,7 @@ export class UsersListComponent {
         email: formData.email,
         website: formData.website,
         company: {
-          name: formData.companyName,
+          name: formData.company.name,
         }
       }
     )
@@ -68,11 +45,11 @@ export class UsersListComponent {
     this.UsersService.deleteUser(id)
   }
 
-  public editUser(user:any) {
+  public editUser(user:iEditUser) {
     this.UsersService.editUser({
       ...user,
       company: {
-        name: user.companyName
+        name: user.company.name
       }
     })
   }
