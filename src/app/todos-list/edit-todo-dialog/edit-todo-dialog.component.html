@@ -1,0 +1,22 @@
+<form id="editTodoDialogForm" [formGroup]="form">
+  <mat-form-field>
+    <mat-label>id пользователя:</mat-label>
+    <input matInput formControlName="userId" placeholder="например: 123" />
+    <mat-error>Только цифры</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>текст задачи:</mat-label>
+    <textarea matInput formControlName="title" placeholder="например: описание задачи"></textarea>
+    <mat-error>Минимум 3 символа</mat-error>
+  </mat-form-field>
+  <div>
+    <label id="radio-group-label">задача завершена?</label>
+    <mat-radio-group formControlName="completed" aria-labelledby="radio-group-label">
+      <mat-radio-button [value]="true">да</mat-radio-button>
+      <mat-radio-button [value]="false">нет</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <button type="submit" [mat-dialog-close]="todoFormWithId" mat-raised-button [disabled]="form.invalid">
+    <mat-icon>save</mat-icon> Сохранить изменения
+  </button>
+</form>

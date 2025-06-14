@@ -1,0 +1,13 @@
+#createUserForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px 0;
+  padding: 50px;
+
+  mat-form-field {
+    width: 100%
+  }
+}
+
+.h1 { margin: 50px 50px 0 }

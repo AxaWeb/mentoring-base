@@ -1,7 +1,8 @@
 import { Component, EventEmitter, inject, Input, Output } from "@angular/core";
-import { iEditUser, iUser } from "../../interfaces/user.interface";
+import { ICreateUser, IUser } from "../../interfaces/user.interface";
 import { MatDialog } from "@angular/material/dialog";
 import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.component";
+import {DeleteUserDialogComponent} from "../delete-user-dialog/delete-user-dialog.component";
 
 @Component({
   selector: "app-user-card",
@@ -12,13 +13,13 @@ import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.co
 
 export class UserCardComponent {
   @Input()
-  user!: iUser;
+  user!: IUser;
 
   @Output()
-  deleteUser: EventEmitter<iUser[]> = new EventEmitter<iUser[]>()
+  deleteUser: EventEmitter<IUser[]> = new EventEmitter<IUser[]>()
 
   @Output()
-  editUser: EventEmitter<iEditUser> = new EventEmitter<iEditUser>()
+  editUser: EventEmitter<ICreateUser> = new EventEmitter<ICreateUser>()
 
   readonly dialog = inject(MatDialog);
 
@@ -28,7 +29,7 @@ export class UserCardComponent {
         data: { user: this.user }
       })
       .afterClosed()
-      .subscribe((editResult: iEditUser | undefined) => {
+      .subscribe((editResult: ICreateUser | undefined) => {
         if (editResult) {
           this.editUser.emit(editResult);
         }
@@ -36,6 +37,15 @@ export class UserCardComponent {
   }
 
   public onDeleteUser(){
-    this.deleteUser.emit()
+    this.dialog
+      .open(DeleteUserDialogComponent, {
+        data: { user: this.user }
+      })
+      .afterClosed()
+      .subscribe((deleteUser: IUser | undefined) => {
+        if (deleteUser) {
+          this.deleteUser.emit()
+        }
+      })
   }
 }

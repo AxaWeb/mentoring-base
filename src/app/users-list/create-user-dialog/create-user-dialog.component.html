@@ -22,7 +22,7 @@
       <mat-error>Минимум 2 символа</mat-error>
     </mat-form-field>
   </div>
-  <button type="submit" (click)="submitForm()" mat-raised-button [disabled]="form.invalid">
+  <button type="submit" [mat-dialog-close]="form.value" mat-raised-button [disabled]="form.invalid">
     <mat-icon>person_add</mat-icon> Create user
   </button>
 </form>

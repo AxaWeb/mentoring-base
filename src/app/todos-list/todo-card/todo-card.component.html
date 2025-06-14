@@ -2,4 +2,5 @@
 <p><span>id задачи: </span>{{todo.id}}</p>
 <p><span>текст задачи: </span>{{todo.title}}</p>
 <p><span>задача завершена?: </span>{{todo.completed ? 'да' : 'нет'}}</p>
-<button class="button" (click)="onDeleteTodo()">удалить задачу</button>
+<button class="button" (click)="openDeleteTodoDialog()">удалить</button>
+<button class="button" (click)="openDialog()">редактировать</button>

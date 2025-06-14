@@ -15,3 +15,16 @@
     box-shadow: 0 0 20px -5px #A1A0A0;
   }
 }
+
+#addTodoIcon {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+
+  & mat-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 70px;
+    color: blue;
+  }
+}

@@ -1,10 +1,12 @@
 <div class="container">
-  <app-create-user-form (createUser)="createUser($event)"></app-create-user-form>
-
   <h1>Список пользователей</h1>
   <div class="usersCart">
     <div *ngFor="let user of UsersService.users$ | async">
       <app-user-card [user]="user" (deleteUser)="deleteUser(user.id)" (editUser)="editUser($event)"></app-user-card>
     </div>
   </div>
+</div>
+
+<div id="addUserIcon" (click)="openCreateUserDialog()">
+  <mat-icon>add_circle</mat-icon>
 </div>

@@ -15,7 +15,7 @@
     <mat-button-toggle value="true">Да</mat-button-toggle>
     <mat-button-toggle value="false">Нет</mat-button-toggle>
   </mat-button-toggle-group>
-  <button type="submit" (click)="submitTodoForm()" mat-raised-button [disabled]="todoForm.invalid">
+  <button type="submit" [mat-dialog-close]="todoForm.value" mat-raised-button [disabled]="todoForm.invalid">
     <mat-icon>add_task</mat-icon>Создать ToDo
   </button>
 </form>

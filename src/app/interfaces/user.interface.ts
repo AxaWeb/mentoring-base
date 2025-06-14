@@ -1,4 +1,4 @@
-export interface iUser {
+export interface IUser {
   id: number;
   name: string;
   username?: string;
@@ -22,7 +22,7 @@ export interface iUser {
   };
 }
 
-export interface iCreateUser {
+export interface ICreateUser {
   id: number;
   name: string;
   email: string;
@@ -30,8 +30,4 @@ export interface iCreateUser {
   company: {
     name: string;
   };
-}
-
-export interface iEditUser extends iCreateUser {
-  id: number;
 }

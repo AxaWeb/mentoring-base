@@ -1,0 +1,11 @@
+<p class="h1">Хотите удалить пользователя {{ userName }}?</p>
+<div id="deleteDialogForm">
+  <button class="button" mat-raised-button [mat-dialog-close]="">
+    <mat-icon>close</mat-icon>
+    Нет
+  </button>
+  <button class="button" mat-raised-button (click)="userGetId" [mat-dialog-close]="userGetId">
+    <mat-icon>check</mat-icon>
+    Да
+  </button>
+</div>

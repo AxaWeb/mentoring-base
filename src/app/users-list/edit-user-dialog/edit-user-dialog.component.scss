@@ -1,8 +1,9 @@
 #editUserDialogForm {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 100%;
   margin: 20px 0;
+  padding: 20px;
 
   mat-button-toggle {
     width: 50%

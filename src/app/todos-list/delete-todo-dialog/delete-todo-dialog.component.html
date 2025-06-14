@@ -1,0 +1,11 @@
+<p class="h1">Хотите удалить этот ToDo?</p>
+<div id="deleteDialogForm">
+  <button class="button" mat-raised-button [mat-dialog-close]="">
+    <mat-icon>close</mat-icon>
+    Нет
+  </button>
+  <button class="button" mat-raised-button (click)="todoGetId" [mat-dialog-close]="todoGetId">
+    <mat-icon>check</mat-icon>
+    Да
+  </button>
+</div>
