@@ -63,7 +63,6 @@ export class TodosListComponent {
     })
   }
 
-
   public openCreateTodoDialog(): void {
     this.dialog
       .open(CreateTodoDialogComponent)
