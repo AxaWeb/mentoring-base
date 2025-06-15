@@ -17,6 +17,7 @@ import {CreateUserDialogComponent} from "./create-user-dialog/create-user-dialog
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
+
 export class UsersListComponent {
   readonly UsersApiService = inject(UsersApiService);
   readonly UsersService = inject(UsersService);
@@ -30,6 +31,7 @@ export class UsersListComponent {
       }
     )
   }
+
 
   public createUser(formData: ICreateUser):void {
     this.UsersService.createUser(
@@ -45,9 +47,11 @@ export class UsersListComponent {
     )
   }
 
+
   public deleteUser(id: number): void {
     this.UsersService.deleteUser(id)
   }
+
 
   public editUser(user: ICreateUser): void {
     this.UsersService.editUser({
@@ -57,6 +61,7 @@ export class UsersListComponent {
       }
     })
   }
+
 
   public openCreateUserDialog(): void {
     this.dialog
