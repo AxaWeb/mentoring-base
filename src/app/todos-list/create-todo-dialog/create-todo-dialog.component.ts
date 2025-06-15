@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ICreateTodo } from "../../interfaces/todo.interface";
+import { ITodo } from "../../interfaces/todo.interface";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -25,8 +25,9 @@ import { MatDialogClose } from "@angular/material/dialog";
   templateUrl: './create-todo-dialog.component.html',
   styleUrl: './create-todo-dialog.component.scss'
 })
+
 export class CreateTodoDialogComponent {
-  readonly data: {todo: ICreateTodo} = inject<{todo: ICreateTodo}>(MAT_DIALOG_DATA);
+  readonly data: { todo: ITodo } = inject<{ todo: ITodo }>(MAT_DIALOG_DATA);
 
   public todoForm = new FormGroup({
     userId: new FormControl(this.data?.todo.userId, [Validators.required, Validators.pattern('^[0-9]*$')]),

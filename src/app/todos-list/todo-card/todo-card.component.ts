@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import { ICreateTodo, ITodo } from "../../interfaces/todo.interface";
+import { ITodo } from "../../interfaces/todo.interface";
 import { MatDialog } from "@angular/material/dialog";
 import { EditTodoDialogComponent } from "../edit-todo-dialog/edit-todo-dialog.component";
 import { DeleteTodoDialogComponent } from "../delete-todo-dialog/delete-todo-dialog.component";
@@ -19,7 +19,7 @@ export class TodoCardComponent {
   deleteTodo:EventEmitter<ITodo> = new EventEmitter<ITodo>()
 
   @Output()
-  editTodo:EventEmitter<ICreateTodo> = new EventEmitter<ICreateTodo>()
+  editTodo:EventEmitter<ITodo> = new EventEmitter<ITodo>()
 
   readonly dialog = inject(MatDialog);
 
@@ -29,7 +29,7 @@ export class TodoCardComponent {
         data: { todo: this.todo }
       })
       .afterClosed()
-      .subscribe((editResult: ICreateTodo | undefined) => {
+      .subscribe((editResult: ITodo | undefined) => {
         if (editResult) {
           this.editTodo.emit(editResult)
         }

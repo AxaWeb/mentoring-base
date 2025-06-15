@@ -1,4 +1,4 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import { ITodo } from "../../interfaces/todo.interface";
 import { MatButton } from "@angular/material/button";
@@ -17,11 +17,9 @@ import { MatIcon } from "@angular/material/icon";
 })
 
 export class DeleteTodoDialogComponent {
-  private readonly data: {todo: ITodo} = inject<{todo: ITodo}>(MAT_DIALOG_DATA);
+  private readonly data: { todo: ITodo } = inject<{ todo: ITodo }>(MAT_DIALOG_DATA);
 
-  get todoGetId(): {id: number} {
-    return {
-      id: this.data.todo.id
-    }
+  get todoGetId(): number {
+    return this.data.todo.id
   }
 }

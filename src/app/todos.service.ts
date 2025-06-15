@@ -1,20 +1,14 @@
-import {inject, Injectable} from "@angular/core";
+import { Injectable } from "@angular/core";
 import { ITodo } from "./interfaces/todo.interface";
 import { BehaviorSubject } from "rxjs";
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({ providedIn: 'root' })
 export class TodosService {
   todoSubject$ = new BehaviorSubject<ITodo[]>([]);
   todos$ = this.todoSubject$.asObservable();
 
-  readonly snackBar = inject(MatSnackBar);
-
   public setTodo(todos: ITodo[]) {
-    this.todoSubject$.next(todos);
-    this.snackBar.open('все ToDo загружены', 'X', {
-      duration: 2000
-    })
+    this.todoSubject$.next(todos)
   }
 
   public editTodo(editTodo: ITodo) {
@@ -22,10 +16,7 @@ export class TodosService {
       this.todoSubject$.value.map(
         (todo: ITodo) => todo.id === editTodo.id ? editTodo : todo
       )
-    );
-    this.snackBar.open('ToDo отредактирован', 'X', {
-      duration: 2000
-    })
+    )
   }
 
   public creatTodo(todos: ITodo) {
@@ -34,23 +25,15 @@ export class TodosService {
     )
 
     if (existingTodos) {
-      this.snackBar.open('Такой ToDo уже есть!', 'X', {
-        duration: 3000
-      })
+      alert('Такой ToDo уже есть!')
     } else {
-      this.todoSubject$.next([todos, ...this.todoSubject$.value]);
-      this.snackBar.open('ToDo добавлен', 'X', {
-        duration: 2000
-      })
+      this.todoSubject$.next([todos, ...this.todoSubject$.value])
     }
   }
 
   public deleteTodo(id:number) {
     this.todoSubject$.next(
       this.todoSubject$.value.filter((todos: ITodo) => todos.id !== id)
-    );
-    this.snackBar.open('ToDo удалён', 'X', {
-      duration: 2000
-    });
+    )
   }
 }

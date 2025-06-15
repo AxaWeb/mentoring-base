@@ -25,7 +25,7 @@ import { IUser } from "../../interfaces/user.interface";
   styleUrl: './edit-user-dialog.component.scss'
 })
 export class EditUserDialogComponent {
-  readonly data: {user: IUser} = inject<{user: IUser}>(MAT_DIALOG_DATA);
+  readonly data: { user: IUser } = inject<{ user: IUser }>(MAT_DIALOG_DATA);
 
   public form = new FormGroup({
     name: new FormControl(this.data.user.name, [Validators.required, Validators.minLength(2)]),

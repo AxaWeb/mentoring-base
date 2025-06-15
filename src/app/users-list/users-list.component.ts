@@ -4,9 +4,10 @@ import { AsyncPipe, NgFor } from "@angular/common";
 import { UserCardComponent } from "./user-card/user-card.component";
 import { UsersService } from "../users.service";
 import { ICreateUser, IUser } from "../interfaces/user.interface";
-import {MatIcon} from "@angular/material/icon";
-import {MatDialog} from "@angular/material/dialog";
-import {CreateUserDialogComponent} from "./create-user-dialog/create-user-dialog.component";
+import { MatIcon } from "@angular/material/icon";
+import { MatDialog } from "@angular/material/dialog";
+import { CreateUserDialogComponent } from "./create-user-dialog/create-user-dialog.component";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-users-list',
@@ -21,7 +22,7 @@ import {CreateUserDialogComponent} from "./create-user-dialog/create-user-dialog
 export class UsersListComponent {
   readonly UsersApiService = inject(UsersApiService);
   readonly UsersService = inject(UsersService);
-
+  readonly snackBar = inject(MatSnackBar);
   public dialog = inject(MatDialog);
 
   constructor() {
@@ -29,7 +30,10 @@ export class UsersListComponent {
       (response:IUser[]) => {
         this.UsersService.setUsers(response)
       }
-    )
+    );
+    this.snackBar.open('Все пользователи загружены', 'X', {
+      duration: 2000
+    })
   }
 
 
@@ -44,12 +48,18 @@ export class UsersListComponent {
           name: formData.company.name,
         }
       }
-    )
+    );
+    this.snackBar.open('Пользователь добавлен', 'X', {
+      duration: 2000
+    })
   }
 
 
   public deleteUser(id: number): void {
-    this.UsersService.deleteUser(id)
+    this.UsersService.deleteUser(id);
+    this.snackBar.open('Пользователь удалён', 'X', {
+      duration: 2000
+    });
   }
 
 
@@ -59,24 +69,16 @@ export class UsersListComponent {
       company: {
         name: user.company.name
       }
+    });
+    this.snackBar.open('Пользователь отредактирован', 'X', {
+      duration: 2000
     })
   }
 
 
   public openCreateUserDialog(): void {
     this.dialog
-      .open(CreateUserDialogComponent, {
-        data: {
-          user: {
-            name: null,
-            email: null,
-            website: null,
-            company: {
-              name: null
-            }
-          }
-        }
-      })
+      .open(CreateUserDialogComponent)
       .afterClosed()
       .subscribe((newUser: ICreateUser): void => {
         if (newUser) {

@@ -3,10 +3,11 @@ import { TodosApiService } from "../todos-api.service";
 import { AsyncPipe, NgFor } from "@angular/common";
 import { TodoCardComponent } from "./todo-card/todo-card.component";
 import { TodosService } from "../todos.service";
-import { ICreateTodo, ITodo } from "../interfaces/todo.interface";
+import { ITodo } from "../interfaces/todo.interface";
 import { MatIcon } from "@angular/material/icon";
 import { CreateTodoDialogComponent } from "./create-todo-dialog/create-todo-dialog.component";
 import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-todos-list',
@@ -20,7 +21,7 @@ import { MatDialog } from "@angular/material/dialog";
 export class TodosListComponent {
   readonly TodosApiService = inject(TodosApiService);
   readonly TodoService = inject(TodosService);
-
+  readonly snackBar = inject(MatSnackBar);
   readonly dialog = inject(MatDialog);
 
   constructor() {
@@ -28,7 +29,10 @@ export class TodosListComponent {
       (todos:ITodo[]) => {
         this.TodoService.setTodo(todos);
       }
-    )
+    );
+    this.snackBar.open('Все Todo загружены', 'X', {
+      duration: 2000
+    })
   }
 
   public createTodo(todoData: ITodo): void {
@@ -39,38 +43,35 @@ export class TodosListComponent {
         title: todoData.title,
         completed: todoData.completed
       }
-    )
+    );
+    this.snackBar.open('Todo добавлен', 'X', {
+      duration: 2000
+    })
   }
 
   public editTodo(todo: ITodo): void {
-    this.TodoService.editTodo(
-      {
-        ...todo
-      }
-    )
+    this.TodoService.editTodo({ ...todo });
+    this.snackBar.open('ToDo отредактирован', 'X', {
+      duration: 2000
+    })
   }
 
   public deleteTodo(id:number) {
     this.TodoService.deleteTodo(id);
+    this.snackBar.open('ToDo удалён', 'X', {
+      duration: 2000
+    })
   }
 
 
   public openCreateTodoDialog(): void {
     this.dialog
-      .open(CreateTodoDialogComponent, {
-        data: {
-          todo: {
-            userId: null,
-            title: null,
-            completed: null
-          }
-        }
-      })
+      .open(CreateTodoDialogComponent)
       .afterClosed()
-      .subscribe((newTodo: ICreateTodo | undefined) => {
+      .subscribe((newTodo: ITodo | undefined) => {
         if (newTodo) {
           this.createTodo(newTodo)
         }
-      });
+      })
   }
 }
