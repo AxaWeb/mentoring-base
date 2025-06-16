@@ -5,15 +5,20 @@ header > div {
 
 .gray {
   background: #4B565E;
-
-  a { color: #fff }
+  a {
+    color: #fff
+  }
 }
 
 .orange {
   background: #F0BA4E;
 
-  a { color: #3C3C3B }
-  .loc { color: #fff }
+  a {
+    color: #3C3C3B
+  }
+  .loc {
+    color: #fff
+  }
 }
 
 .top1, .top2 {
@@ -32,13 +37,17 @@ header > div {
 .top1 {
   height: 80px;
 
-  nav, div { gap: 40px }
+  nav, div {
+    gap: 40px
+  }
 }
 
 .top2 {
   height: 48px;
 
-  div { gap: 25px }
+  div {
+    gap: 25px
+  }
 }
 
 .cart {
@@ -64,4 +73,6 @@ header > div {
   }
 }
 
-.date { color: #fff }
+.date {
+  color: #fff
+}
