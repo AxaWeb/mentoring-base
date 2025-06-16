@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {NgFor, NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import { DatePipe, NgFor, NgIf } from "@angular/common";
+import { RouterLink } from "@angular/router";
 
 const myCompanyFunc = (i:string) => i;
 const myCompany:string = 'О компании';
@@ -11,7 +11,7 @@ const toUpperCase = ['Каталог', 'Стройматериалы', 'Инст
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgIf, NgFor, RouterLink],
+  imports: [ NgIf, NgFor, RouterLink, DatePipe ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -31,4 +31,6 @@ export class HeaderComponent {
     )
     this.isUpperCase = !this.isUpperCase;
   }
+
+  today: Date = new Date();
 }

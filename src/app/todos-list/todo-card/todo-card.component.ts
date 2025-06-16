@@ -3,12 +3,14 @@ import { ITodo } from "../../interfaces/todo.interface";
 import { MatDialog } from "@angular/material/dialog";
 import { EditTodoDialogComponent } from "../edit-todo-dialog/edit-todo-dialog.component";
 import { DeleteTodoDialogComponent } from "../delete-todo-dialog/delete-todo-dialog.component";
+import { Limit20SimbolsPipe } from "../../pipes/limit-20-simbols-pipe";
 
 @Component({
   selector: 'app-todo-card',
   templateUrl: './todo-card.component.html',
   styleUrl: './todo-card.component.scss',
-  standalone: true
+  standalone: true,
+  imports: [ Limit20SimbolsPipe ]
 })
 
 export class TodoCardComponent {

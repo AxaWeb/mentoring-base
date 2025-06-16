@@ -28,12 +28,12 @@ export class UsersListComponent {
   constructor() {
     this.UsersApiService.getUsers().subscribe(
       (response:IUser[]) => {
-        this.UsersService.setUsers(response)
+        this.UsersService.setUsers(response);
+        this.snackBar.open('Все пользователи загружены', 'X', {
+          duration: 2000
+        })
       }
-    );
-    this.snackBar.open('Все пользователи загружены', 'X', {
-      duration: 2000
-    })
+    )
   }
 
 

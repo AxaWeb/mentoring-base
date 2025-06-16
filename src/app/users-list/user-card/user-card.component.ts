@@ -2,12 +2,16 @@ import { Component, EventEmitter, inject, Input, Output } from "@angular/core";
 import { ICreateUser, IUser } from "../../interfaces/user.interface";
 import { MatDialog } from "@angular/material/dialog";
 import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.component";
-import {DeleteUserDialogComponent} from "../delete-user-dialog/delete-user-dialog.component";
+import { DeleteUserDialogComponent } from "../delete-user-dialog/delete-user-dialog.component";
+import { ClearPhonePipe } from "../../pipes/clear-phone.pipe";
 
 @Component({
   selector: "app-user-card",
   templateUrl: "./user-card.component.html",
   styleUrl: "./user-card.component.scss",
+  imports: [
+    ClearPhonePipe
+  ],
   standalone: true
 })
 

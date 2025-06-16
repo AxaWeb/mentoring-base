@@ -28,11 +28,11 @@ export class TodosListComponent {
     this.TodosApiService.getTodos().subscribe(
       (todos:ITodo[]) => {
         this.TodoService.setTodo(todos);
+        this.snackBar.open('Все Todo загружены', 'X', {
+          duration: 2000
+        })
       }
-    );
-    this.snackBar.open('Все Todo загружены', 'X', {
-      duration: 2000
-    })
+    )
   }
 
   public createTodo(todoData: ITodo): void {
