@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DatePipe, NgFor, NgIf } from "@angular/common";
 import { RouterLink } from "@angular/router";
+import { CartColorDirective } from "../directives/cartcolor.directive";
 
 const myCompanyFunc = (i:string) => i;
 const myCompany:string = 'О компании';
@@ -11,7 +12,7 @@ const toUpperCase = ['Каталог', 'Стройматериалы', 'Инст
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ NgIf, NgFor, RouterLink, DatePipe ],
+  imports: [ NgIf, NgFor, RouterLink, DatePipe, CartColorDirective ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

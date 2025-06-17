@@ -21,7 +21,7 @@
       <mat-error>Минимум 2 символа</mat-error>
     </mat-form-field>
   </div>
-  <button type="submit" [mat-dialog-close]="userFormWithId" mat-raised-button [disabled]="form.invalid">
+  <button type="submit" matTooltip="Сохранить изменения" matTooltipPosition="right" [mat-dialog-close]="userFormWithId" mat-raised-button [disabled]="form.invalid">
     <mat-icon>save</mat-icon> Сохранить изменения
   </button>
 </form>
