@@ -6,6 +6,7 @@ import { MatError, MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatIcon } from "@angular/material/icon";
 import { MatInput } from "@angular/material/input";
 import { IUser } from "../../interfaces/user.interface";
+import { MatTooltip } from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-edit-user-dialog',
@@ -19,7 +20,8 @@ import { IUser } from "../../interfaces/user.interface";
     MatInput,
     MatLabel,
     ReactiveFormsModule,
-    MatDialogClose
+    MatDialogClose,
+    MatTooltip
   ],
   templateUrl: './edit-user-dialog.component.html',
   styleUrl: './edit-user-dialog.component.scss'

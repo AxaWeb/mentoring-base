@@ -8,11 +8,12 @@ import { MatIcon } from "@angular/material/icon";
 import { MatDialog } from "@angular/material/dialog";
 import { CreateUserDialogComponent } from "./create-user-dialog/create-user-dialog.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserCardShadowDirective } from "../directives/userCardShadow.directive";
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [NgFor, UserCardComponent, AsyncPipe, MatIcon],
+  imports: [ NgFor, UserCardComponent, AsyncPipe, MatIcon, UserCardShadowDirective ],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

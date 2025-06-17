@@ -4,13 +4,15 @@ import { MatDialog } from "@angular/material/dialog";
 import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.component";
 import { DeleteUserDialogComponent } from "../delete-user-dialog/delete-user-dialog.component";
 import { ClearPhonePipe } from "../../pipes/clear-phone.pipe";
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: "app-user-card",
   templateUrl: "./user-card.component.html",
   styleUrl: "./user-card.component.scss",
   imports: [
-    ClearPhonePipe
+    ClearPhonePipe, MatButtonModule, MatIconModule
   ],
   standalone: true
 })
