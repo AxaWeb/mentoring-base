@@ -3,5 +3,5 @@
 <p><span>Сайт: </span>{{ user.website }}</p>
 <p><span>Телефон: </span>{{ user.phone | clearPhonePipe }}</p>
 <p><span>Компания: </span>{{ user.company.name }}</p>
-<button mat-button="outlined" class="button" (click)="onDeleteUser()">удалить</button>
-<button class="button" (click)="openDialog()">редактировать</button>
+<button mat-button mat-flat-button color="primary" class="button" (click)="onDeleteUser()">удалить</button>
+<button mat-button mat-flat-button color="accent" class="button" (click)="openDialog()">редактировать</button>

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { DatePipe, NgFor, NgIf } from "@angular/common";
 import { RouterLink } from "@angular/router";
-import { CartColorDirective } from "../directives/cartcolor.directive";
+import { CartColorDirective } from "../directives/cart-color.directive";
+import { AuthService } from '../auth.service';
 
 const myCompanyFunc = (i:string) => i;
 const myCompany:string = 'О компании';
@@ -34,4 +35,18 @@ export class HeaderComponent {
   }
 
   today: Date = new Date();
+
+  constructor(private auth: AuthService) {}
+
+  loginAsAdmin() {
+    this.auth.loginAsAdmin();
+  }
+
+  loginAsUser() {
+    this.auth.loginAsUser();
+  }
+
+  logout() {
+    this.auth.logout();
+  }
 }

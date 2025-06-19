@@ -8,7 +8,7 @@ import { MatIcon } from "@angular/material/icon";
 import { MatDialog } from "@angular/material/dialog";
 import { CreateUserDialogComponent } from "./create-user-dialog/create-user-dialog.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UserCardShadowDirective } from "../directives/userCardShadow.directive";
+import { UserCardShadowDirective } from "../directives/user-card-shadow.directive";
 
 @Component({
   selector: 'app-users-list',

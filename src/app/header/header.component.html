@@ -15,7 +15,13 @@
         </div>
         <button (click)="isheaderTop1Item3 = !isheaderTop1Item3">Каталог</button>
         <button (click)="changeMenuText()">Изменить текст</button>
-        <div class="date">{{ today | date:'mediumDate' }}</div>
+        <div class="date">{{ today | date: 'mediumDate' }}</div>
+        <div>
+          <button (click)="loginAsAdmin()">Войти как администратор</button>
+          <button (click)="loginAsUser()">Войти как пользователь</button>
+          <button (click)="logout()">Выйти</button>
+          <a routerLink="/admin">Перейти в админку</a>
+        </div>
       </nav>
 
       <div>
