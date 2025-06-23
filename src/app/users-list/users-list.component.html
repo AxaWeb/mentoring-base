@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Список пользователей</h1>
   <div class="usersCart">
-    <div *ngFor="let user of UsersService.users$ | async" userCardShadow>
+    <div *ngFor="let user of users$ | async" userCardShadow>
       <app-user-card [user]="user" (deleteUser)="deleteUser(user.id)" (editUser)="editUser($event)"></app-user-card>
     </div>
   </div>

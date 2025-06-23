@@ -2,13 +2,15 @@ import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { UsersApiService } from "../users-api.service";
 import { AsyncPipe, NgFor } from "@angular/common";
 import { UserCardComponent } from "./user-card/user-card.component";
-import { UsersService } from "../users.service";
 import { ICreateUser, IUser } from "../interfaces/user.interface";
 import { MatIcon } from "@angular/material/icon";
 import { MatDialog } from "@angular/material/dialog";
 import { CreateUserDialogComponent } from "./create-user-dialog/create-user-dialog.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserCardShadowDirective } from "../directives/user-card-shadow.directive";
+import { Store } from "@ngrx/store";
+import { UsersActions } from "./store/user.actions";
+import { selectUsers } from "./store/users.selectors";
 
 @Component({
   selector: 'app-users-list',
@@ -19,28 +21,27 @@ import { UserCardShadowDirective } from "../directives/user-card-shadow.directiv
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-
 export class UsersListComponent {
   readonly UsersApiService = inject(UsersApiService);
-  readonly UsersService = inject(UsersService);
   readonly snackBar = inject(MatSnackBar);
   public dialog = inject(MatDialog);
+  private readonly store = inject(Store);
+  public readonly users$ = this.store.select(selectUsers);
 
   constructor() {
     this.UsersApiService.getUsers().subscribe(
       (response:IUser[]) => {
-        this.UsersService.setUsers(response);
+        this.store.dispatch(UsersActions.set({ users: response }));
         this.snackBar.open('Все пользователи загружены', 'X', {
           duration: 2000
-        })
+        });
       }
     )
   }
 
-
   public createUser(formData: ICreateUser):void {
-    this.UsersService.createUser(
-      {
+    this.store.dispatch(UsersActions.create({
+      user: {
         id: new Date().getTime(),
         name: formData.name,
         email: formData.email,
@@ -49,33 +50,25 @@ export class UsersListComponent {
           name: formData.company.name,
         }
       }
-    );
+    }));
     this.snackBar.open('Пользователь добавлен', 'X', {
       duration: 2000
-    })
+    });
   }
 
-
   public deleteUser(id: number): void {
-    this.UsersService.deleteUser(id);
+    this.store.dispatch(UsersActions.delete({ id }));
     this.snackBar.open('Пользователь удалён', 'X', {
       duration: 2000
     });
   }
 
-
   public editUser(user: ICreateUser): void {
-    this.UsersService.editUser({
-      ...user,
-      company: {
-        name: user.company.name
-      }
-    });
+    this.store.dispatch(UsersActions.edit({ user }));
     this.snackBar.open('Пользователь отредактирован', 'X', {
       duration: 2000
-    })
+    });
   }
-
 
   public openCreateUserDialog(): void {
     this.dialog

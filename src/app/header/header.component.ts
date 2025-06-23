@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DatePipe, NgFor, NgIf } from "@angular/common";
 import { RouterLink } from "@angular/router";
 import { CartColorDirective } from "../directives/cart-color.directive";
@@ -36,7 +36,9 @@ export class HeaderComponent {
 
   today: Date = new Date();
 
-  constructor(private auth: AuthService) {}
+  private readonly auth = inject(AuthService)
+
+  constructor(public authService: AuthService) {}
 
   loginAsAdmin() {
     this.auth.loginAsAdmin();

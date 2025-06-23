@@ -1,6 +1,5 @@
-import {inject, Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 interface AuthUser {
@@ -9,15 +8,11 @@ interface AuthUser {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  readonly snackBar = inject(MatSnackBar);
   private router = inject(Router);
   private userSubject$ = new BehaviorSubject<AuthUser | null>(null);
 
   loginAsAdmin() {
     this.userSubject$.next({ isAdmin: true })
-    this.snackBar.open('Вы админ!', 'X', {
-      duration: 2000
-    })
   }
 
   loginAsUser() {
@@ -25,9 +20,6 @@ export class AuthService {
     if (this.router.url.includes('/admin')) {
       void this.router.navigate(['/'])
     }
-    this.snackBar.open('Вы пользователь!', 'X', {
-      duration: 2000
-    })
   }
 
   logout() {
@@ -35,16 +27,17 @@ export class AuthService {
     if (this.router.url.includes('/admin')) {
       void this.router.navigate(['/']);
     }
-    this.snackBar.open('Вы вышли!', 'X', {
-      duration: 2000
-    })
+  }
+
+  isLoggedIn(): boolean {
+    return this.userSubject$.value !== null
   }
 
   isAdmin(): boolean {
     return this.userSubject$.value?.isAdmin === true
   }
 
-  isLoggedIn(): boolean {
-    return this.userSubject$.value !== null
+  isUser(): boolean {
+    return this.userSubject$.value?.isAdmin === false;
   }
 }
