@@ -31,3 +31,7 @@ export interface ICreateUser {
     name: string;
   };
 }
+
+export interface UsersState {
+  users: IUser[]
+}

@@ -29,7 +29,7 @@
             *ngIf="authService.isLoggedIn()"
             (click)="logout()"
             >Выйти</button>
-          <a *ngIf="authService.isAdmin()" routerLink="/admin">Перейти в админку</a>
+          <a *ngIf="AuthService.isAdmin()" routerLink="/admin">Перейти в админку</a>
         </div>
       </nav>
 

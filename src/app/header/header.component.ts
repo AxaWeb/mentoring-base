@@ -36,9 +36,7 @@ export class HeaderComponent {
 
   today: Date = new Date();
 
-  private readonly auth = inject(AuthService)
-
-  constructor(public authService: AuthService) {}
+  public readonly auth = inject(AuthService)
 
   loginAsAdmin() {
     this.auth.loginAsAdmin();
